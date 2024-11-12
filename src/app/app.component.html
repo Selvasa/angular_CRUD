@@ -1,5 +1,84 @@
-<div style="text-align: center; height: 100vh;">
-  <span style="background-color: red; display: inline-block; padding: 10px;">
-    Centered Span
-  </span>
+<div class="row mx-0">
+  <div class="col-md-12 col-lg-8">
+    <div class="card">
+      <div class="card-header bg-success text-white fw-bold text-center p-1">Employee List</div>
+      <div class="card-body">
+        <table class="table table-bordered">
+          <thead>
+            <tr>
+              <th>SI No</th>
+              <th>Name</th>
+              <th>Email</th>
+              <th>Contact</th>
+              <th>City</th>
+              <th>Address</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            @if(empDatas.length>0){
+            @for(item of empDatas ;track item; let i=$index;){
+            <tr>
+              <td>{{$index+1}}</td>
+              <td>{{item?.empName}}</td>
+              <td>{{item?.empEmail}}</td>
+              <td>{{item?.empContact}}</td>
+              <td>{{item?.empCity}}</td>
+              <td>{{item?.empAddress}}</td>
+              <td>
+                <span class="btn btn-success btn-sm " style="cursor: pointer;" (click)="onEdit(item)">edit</span>
+                <span class="btn btn-danger btn-sm mx-2" style="cursor: pointer;" (click)="deleteForm(item?.empId)">delete</span>
+              </td>
+            </tr>
+            }
+            }
+            @else {
+            <tr>No Data Found</tr>
+            }
+
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-12 col-lg-4">
+    <div class="card">
+      <div class="card-header bg-primary text-white fw-bold text-center p-1">Employee Form</div>
+      <div class="card-body">
+        <div class="row mt-2">
+          <form [formGroup]="userForm" (ngSubmit)="saveData()">
+            <div class="col-10">
+              <label for="name">Name</label>
+              <input type="text" id="name" formControlName="empName" class="form-control mt-2">
+            </div>
+            <div class="col-10 mt-1">
+              <label for="email">Email</label>
+              <input type="text" id="email" formControlName="empEmail" class="form-control mt-2">
+            </div>
+            <div class="col-10 mt-1">
+              <label for="contact">Contact</label>
+              <input type="text" id="contact" class="form-control mt-2" formControlName="empContact">
+            </div>
+            <div class="col-10 mt-1">
+              <label for="city">City</label>
+              <input type="text" id="city" class="form-control mt-2" formControlName="empCity">
+            </div>
+            <div class="col-10 mt-1">
+              <label for="address">Address</label>
+              <textarea id="address" class="form-control mt-2" formControlName="empAddress"></textarea>
+            </div>
+            <div class="col-6 mt-2">
+              <button class="btn btn-secondary" type="button" (click)="resetForm()">Reset</button>&nbsp;
+              @if(userForm.controls['empId'].value==0){
+              <button class="btn btn-success" type="submit">Save</button>
+              }
+              @else {
+              <button class="btn btn-warning" type="button" (click)="updateData(userForm.controls['empId'].value)">Update</button>
+              }
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
