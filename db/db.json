@@ -1,5 +1,36 @@
 {
-    "home":{
-        "name":"aaa"
+  "students": [
+    {
+      "id": "cd4f",
+      "sName": "a",
+      "sAge": "b",
+      "sAddress": "d",
+      "sCity": "c",
+      "sTell": "e"
+    },
+    {
+      "sName": "AAAAA",
+      "sAge": "b",
+      "sAddress": "d",
+      "sCity": "c",
+      "sTell": "e",
+      "id": "de02"
+    },
+    {
+      "id": "2fa5",
+      "sName": "A",
+      "sAge": "B",
+      "sAddress": "D",
+      "sCity": "C",
+      "sTell": "E"
+    },
+    {
+      "id": "5b02",
+      "sName": "selvan",
+      "sAge": "20",
+      "sAddress": "ddress",
+      "sCity": "city",
+      "sTell": "tell"
     }
+  ]
 }
