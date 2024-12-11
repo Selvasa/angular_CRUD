@@ -13,7 +13,7 @@
             </tr>
          </thead>
          <tbody>
-            <tr *ngFor="let item of studentList;let i=index">
+            <tr *ngFor="let item of studentList;let i=index" #appCustDir>
                <td>{{i+1}}</td>
                <td>{{item.sName}}</td>
                <td>{{item.sAge}}</td>
@@ -28,3 +28,12 @@
       </table>
    </div>
 </div>
+<p #customeDirective>Lorem ipsum dolor sit amet consectetur adipisicing elit. Porro non
+   deserunt iste
+   totam vero, amet,
+   enim
+   vitae quae
+   alias nobis excepturi laboriosam earum ab dolore, repellendus voluptates quasi cumque! Laboriosam nulla, ea ipsam
+   sint expedita ullam quaerat iure animi magni minus voluptates praesentium consequatur reprehenderit, at quam maiores
+   sequi nostrum!
+</p>
