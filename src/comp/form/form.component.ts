@@ -12,13 +12,14 @@ import { CommonModule } from '@angular/common';
   styleUrl: './form.component.css'
 })
 export class FormComponent {
-  private service = inject(CrudService)
-  @Input() singleStu: any;
-  @Output() studentListEmit=new EventEmitter()
-  isUpdate = false;
-  updataId: any;
+  private service = inject(CrudService);
+  private postData = inject(CrudService);
 
-  postData = inject(CrudService);
+  @Output() formStudentValue = new EventEmitter();
+  @Output() uformStudentValue = new EventEmitter();
+  @Input() sStudent: any;
+  isUpdate = false;
+  upDateId: any;
 
   studentData: IStudent = { sName: '', sAge: null, sAddress: '', sCity: '', sTell: null }
   formValue = new FormGroup({
@@ -32,34 +33,28 @@ export class FormComponent {
   constructor() { }
 
   onClick() {
-    this.service.postStudentData(this.formValue.value as IStudent).subscribe();
+    this.formStudentValue.emit(this.formValue.value);
     this.onReset()
-  }
-  ngOnInit() {
-    this.service.getStudentData().subscribe((res: any) => {
-      console.log(res);
-      
-      this.studentListEmit.emit(res)
-    })
-
   }
 
   ngOnChanges() {
-    if (this.singleStu) {
-      let { id } = this.singleStu;
-      this.updataId = id;
-      delete this.singleStu.id;
-      this.formValue.setValue(this.singleStu);
-      this.isUpdate = true
+    if (this.sStudent) {
+      this.isUpdate = true;
+      let { id } = this.sStudent;
+      this.upDateId = id;
+
+      delete this.sStudent.id;
+      this.formValue.setValue(this.sStudent)
     }
-  }
-  onUpdate() {
-    this.service.updateOne(this.updataId, this.formValue.value).subscribe()
-    this.isUpdate = false;
-    this.onReset()
   }
 
   onReset() {
-    this.formValue.reset();
+    this.formValue.reset(this.studentData);
+    this.isUpdate = false;
+  }
+  onUpdate() {
+    this.uformStudentValue.emit({ value: this.formValue.value, id: this.upDateId })
+    this.isUpdate = false;
+    this.onReset()
   }
 }

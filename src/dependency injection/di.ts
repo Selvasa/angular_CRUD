@@ -27,7 +27,6 @@ class DependencyInjection<T> {
         } else {
             const data = new instance();
             DependencyInjection.existingInstances.set(instance, data);
-            console.log("direct instance",instance,"direct data", data);
             return data;
         }
     }

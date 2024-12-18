@@ -1,36 +1,101 @@
-import { Component, inject, Input } from '@angular/core';
+import { Component, EventEmitter, inject, Input, Output, VERSION } from '@angular/core';
 import { FormComponent } from '../form/form.component';
 import { ListComponent } from '../list/list.component';
 import { CrudService } from '../crud.service';
+import { map } from 'rxjs';
 
 @Component({
-  selector: 'app-crud',
-  standalone: true,
-  imports: [FormComponent, ListComponent],
-  templateUrl: './crud.component.html',
-  styleUrl: './crud.component.css'
+    selector: 'app-crud',
+    standalone: true,
+    imports: [FormComponent, ListComponent],
+    templateUrl: './crud.component.html',
+    styleUrl: './crud.component.css'
 })
 export class CrudComponent {
-  service = inject(CrudService)
-  singleStudent: any;
-  studentList: any;
 
-  singleStu(value: any) {
-    this.singleStudent = value
-  }
+    // services
+    private crudService = inject(CrudService);
 
-  studentListEmit(value: any) {
-    this.studentList = value;
-    console.log(value,'crud');
-    
-  }
+    // variables
+    sStudent: any;
+    studentList: any;
 
-  // ngOnInit() {
-  //   this.service.getStudentData().subscribe((res: any) => {
-  //     console.log(res);
+    valueFromChild(value: any) {
+        this.crudService.postStudentData(value).subscribe(() => {
+            this.getStudentData();
+        });
+    }
+    ngOnInit() {
+        console.log('hii',VERSION);
+        this.getStudentData();
+        this.getEmp();
+    }
 
-  //     this.studentList = res
-  //   })
+    getStudentData() {
+        this.crudService.getStudentData().subscribe((res: any) => {
+            this.studentList = res;
+        })
+    }
+    singleStudent(value: any) {
+        this.crudService.getSingleStudent(value).subscribe((res) => {
+            this.sStudent = res;
+        })
+    }
 
-  // }
+    updateStudent(value: any) {
+        this.crudService.updateOne(value.id, value.value).subscribe(() => {
+            this.getStudentData();
+        });
+    }
+
+    deleteStu(id: any) {
+        console.log(id);
+
+        this.crudService.deleteStudent(id).subscribe(() => {
+            this.getStudentData();
+        });
+    }
+
+    getEmp() {
+        this.crudService.getEmpDetails().pipe(
+            map((cart: any) => {
+                const filteredEntryGroups = cart?.entryGroups?.filter(
+                    (group: any) => group.type !== "STANDALONE" && group.label !== "Medpax printed Exterior"
+                );
+
+                const medpaxMapping = filteredEntryGroups?.reduce((acc: any[], group: any, groupIndex: number) => {
+                    if (group.entries?.some((entry: any) => entry.product?.code === "000000000500000032")) {
+                        const entryNumbers = group.entries.map((entry: any) => entry.entryNumber);
+                        const subEntries = filteredEntryGroups.filter((entry: any) => entryNumbers.includes(entry.entryGroupNumber));
+                        const detailsGroup = {
+                            ...group,
+                            entries: group.entries.filter((entry: any) => entry.product.code !== '000000000200000633'),
+                        };
+                        const actualDetails = cart.entries.find((item: any) => item.entryNumber === group.entryGroupNumber);
+
+                        acc.push({
+                            medpaxLabel: `Medpax ${groupIndex + 1}`,
+                            details: detailsGroup,
+                            entryNumbers,
+                            entryNumber: group.entryGroupNumber,
+                            actualDetails,
+                            isMedPax: true,
+                            subEntries,
+                        });
+                    }
+                    return acc;
+                }, []);
+
+                const updatedOtherArray = cart?.entries.filter((entry: any) =>
+                    !medpaxMapping.some((medpax: any) =>
+                        entry.entryNumber >= medpax.entryNumber && entry.entryNumber <= medpax.entryNumber + 99
+                    )
+                );
+
+                const newArray = [...updatedOtherArray, ...medpaxMapping].sort((a: any, b: any) => a.entryNumber - b.entryNumber);
+
+                return { ...cart, entries: newArray };
+            })
+        ).subscribe()
+    }
 }
