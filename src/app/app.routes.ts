@@ -4,5 +4,7 @@ import { RootComponent } from '../root/root.component';
 
 export const routes: Routes = [
     { path: 'home', component: RootComponent },
-    { path: 'crud', component: CrudComponent }
+    { path: 'crud', component: CrudComponent },
+    
 ];
+

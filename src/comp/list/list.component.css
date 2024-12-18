@@ -4,3 +4,9 @@
     font-weight: bold;
     padding: 20px;
 }
+
+.noproblem {
+    border-bottom: 2px blue solid;
+    padding: 20px;
+    transition: ease-in-out .5s;
+}

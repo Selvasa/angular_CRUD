@@ -1,4 +1,4 @@
-import { Component, EventEmitter, inject, Input, Output } from '@angular/core';
+import { Component, EventEmitter, inject, Input, Output, VERSION } from '@angular/core';
 import { FormComponent } from '../form/form.component';
 import { ListComponent } from '../list/list.component';
 import { CrudService } from '../crud.service';
@@ -26,6 +26,7 @@ export class CrudComponent {
         });
     }
     ngOnInit() {
+        console.log('hii',VERSION);
         this.getStudentData();
         this.getEmp();
     }

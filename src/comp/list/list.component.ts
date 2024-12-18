@@ -1,12 +1,12 @@
 import { CommonModule } from '@angular/common';
 import { ChangeDetectorRef, Component, EventEmitter, inject, input, Input, Output, signal, ViewChild, ViewContainerRef } from '@angular/core';
 import { CrudService } from '../crud.service';
-import { CustDirDirective } from '../../directive/cust-dir.directive';
+import CustDir from '../../directive/custom.directive';
 
 @Component({
   selector: 'app-list',
   standalone: true,
-  imports: [CommonModule, CustDirDirective],
+  imports: [CommonModule,CustDir],
   templateUrl: './list.component.html',
   styleUrl: './list.component.css'
 })
