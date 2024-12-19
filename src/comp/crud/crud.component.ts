@@ -3,18 +3,21 @@ import { FormComponent } from '../form/form.component';
 import { ListComponent } from '../list/list.component';
 import { CrudService } from '../crud.service';
 import { map } from 'rxjs';
+import { Store } from '@ngrx/store';
 
 @Component({
     selector: 'app-crud',
     standalone: true,
     imports: [FormComponent, ListComponent],
     templateUrl: './crud.component.html',
-    styleUrl: './crud.component.css'
+    styleUrl: './crud.component.css',
+    // encapsulation:
 })
 export class CrudComponent {
 
     // services
     private crudService = inject(CrudService);
+    private store = inject(Store);
 
     // variables
     sStudent: any;
@@ -26,9 +29,12 @@ export class CrudComponent {
         });
     }
     ngOnInit() {
-        console.log('hii',VERSION);
         this.getStudentData();
         this.getEmp();
+        this.store.select('reducer').subscribe((res) => {
+            console.log(res);
+
+        })
     }
 
     getStudentData() {

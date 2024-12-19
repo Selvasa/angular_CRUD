@@ -1816,5 +1816,6 @@
       "tslint": "~6.1.0",
       "typescript": "4.8.4"
     }
-  }
+  },
+  "ngrx-crud": {}
 }
