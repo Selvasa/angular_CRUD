@@ -1,4 +1,5 @@
-import { createReducer } from "@ngrx/store";
+import { createReducer, on } from "@ngrx/store";
+import { dec, inc, reset } from "./crud-action";
 
 const initalState: any = [
     {
@@ -26,4 +27,13 @@ const initalState: any = [
         "id": "3945"
     }
 ];
-export const crud_reducer = createReducer(initalState,)
+
+const counterState = 10;
+export const crud_reducer = createReducer(counterState,
+    on(inc, (ok,s) => {
+        console.log(ok,s);
+        return ok + 1
+    }),
+    on(dec, (ok) => ok - 1),
+    on(reset, (reset) => 0)
+)
