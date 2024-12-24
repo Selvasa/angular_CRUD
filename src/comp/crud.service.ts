@@ -9,9 +9,10 @@ export class CrudService {
 
     private http = inject(HttpClient);
     ajith = 10;
+    https='http:';
     constructor() { }
     postStudentData(studentData: IStudent) {
-        return this.http.post('http://localhost:3000/students', studentData)
+        return this.http.post(this.https+'//localhost:3000/students', studentData)
     }
 
     getStudentData() {
