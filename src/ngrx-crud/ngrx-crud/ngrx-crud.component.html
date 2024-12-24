@@ -1,5 +1,8 @@
-<h2>Ngrx Crud</h2>
-<h3>{{count$|async}}</h3>
-
-<button class="btn btn-primary btn-sm" (click)="increment()">Increment</button>&nbsp;
-<button class="btn btn-secondary btn-sm" (click)="decrement()">Decrement</button>
+<div class="d-flex">
+    <div class="col-8 px-2">
+        <app-ngrx-list></app-ngrx-list>
+    </div>
+    <div class="col-4 px-2">
+        <app-ngrx-form></app-ngrx-form>
+    </div>
+</div>

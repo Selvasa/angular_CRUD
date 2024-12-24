@@ -3,11 +3,13 @@ import { Store } from '@ngrx/store';
 import { dec, inc, reset } from '../crud-action';
 import { Observable } from 'rxjs';
 import { AsyncPipe } from '@angular/common';
+import { NgrxListComponent } from "../ngrx-list/ngrx-list.component";
+import { NgrxFormComponent } from "../ngrx-form/ngrx-form.component";
 
 @Component({
   selector: 'app-ngrx-crud',
   standalone: true,
-  imports: [AsyncPipe],
+  imports: [AsyncPipe, NgrxListComponent, NgrxFormComponent],
   templateUrl: './ngrx-crud.component.html',
   styleUrl: './ngrx-crud.component.css'
 })
