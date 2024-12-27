@@ -1,8 +1,8 @@
 <div class="d-flex">
     <div class="col-8 px-2">
-        <app-ngrx-list></app-ngrx-list>
+        <app-ngrx-list (getOne)="getSingleDataFromChild($event)"></app-ngrx-list>
     </div>
     <div class="col-4 px-2">
-        <app-ngrx-form></app-ngrx-form>
+        <app-ngrx-form  [getSingleValueFromParent]="passSingleValueToChild"></app-ngrx-form>
     </div>
 </div>

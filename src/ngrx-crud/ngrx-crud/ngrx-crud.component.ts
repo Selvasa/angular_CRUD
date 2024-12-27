@@ -14,15 +14,16 @@ import { NgrxFormComponent } from "../ngrx-form/ngrx-form.component";
   styleUrl: './ngrx-crud.component.css'
 })
 export class NgrxCrudComponent {
+  passSingleValueToChild: any
   private store = inject(Store<{ count: any }>)
   count$: Observable<any> = this.store.select('count')
   constructor() {
     // console.log(this.count$);
-    this.count$.subscribe(res => console.log(res))
+    // this.count$.subscribe(res => console.log(res))
 
   }
   increment() {
-    this.store.dispatch(inc('sss',{ a: { name: 'sarath', age: 20, tel: 9090808070 } }));
+    this.store.dispatch(inc('sss', { a: { name: 'sarath', age: 20, tel: 9090808070 } }));
 
   }
   decrement() {
@@ -31,5 +32,11 @@ export class NgrxCrudComponent {
 
   reset() {
     this.store.dispatch(reset())
+  }
+
+  getSingleDataFromChild(event: any) {
+    console.log(event);
+    
+    this.passSingleValueToChild = event;
   }
 }
