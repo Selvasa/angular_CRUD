@@ -5,11 +5,12 @@ import { Observable } from 'rxjs';
 import { AsyncPipe } from '@angular/common';
 import { NgrxListComponent } from "../ngrx-list/ngrx-list.component";
 import { NgrxFormComponent } from "../ngrx-form/ngrx-form.component";
+import { BGDir } from '../../directive/bg-dir';
 
 @Component({
   selector: 'app-ngrx-crud',
   standalone: true,
-  imports: [AsyncPipe, NgrxListComponent, NgrxFormComponent],
+  imports: [AsyncPipe, NgrxListComponent, NgrxFormComponent,BGDir],
   templateUrl: './ngrx-crud.component.html',
   styleUrl: './ngrx-crud.component.css'
 })
@@ -20,7 +21,11 @@ export class NgrxCrudComponent {
   constructor() {
     // console.log(this.count$);
     // this.count$.subscribe(res => console.log(res))
-
+this.ngOnInit()
+  }
+  ngOnInit(){
+    console.log('hiiii');
+    
   }
   increment() {
     this.store.dispatch(inc('sss', { a: { name: 'sarath', age: 20, tel: 9090808070 } }));
@@ -35,6 +40,7 @@ export class NgrxCrudComponent {
   }
 
   getSingleDataFromChild(event: any) {
+    this.ngOnInit()
     console.log(event);
     
     this.passSingleValueToChild = event;

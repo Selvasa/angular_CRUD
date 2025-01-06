@@ -1,3 +1,9 @@
+:host{
+    ::placeholder{
+        color:red;
+    }
+}
+
 .form-control {
     &:focus {
         border-color: #198754 !important;

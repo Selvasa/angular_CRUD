@@ -12,21 +12,20 @@ export default class CustDir {
     constructor(private rend: Renderer2, private ref: ElementRef) { }
 
     ngOnInit() {
-        this.ref.nativeElement.style.color = this.col;
+        this.ref.nativeElement.style.color = 'red';
         // this.rend.setStyle(this.ref.nativeElement, 'background-color', this.bg);
         // this.rend.setStyle(this.ref.nativeElement, 'backgroundColor', this.bg);
-        this.as='red';
-
+        this.as='lightblue';
     }
 
-    @HostListener('mouseenter', ['$event']) myfun(event: any) {
-        // let a = (event.target as HTMLElement).setAttribute('class', 'noproblem')
-        // console.log('click listener called', a.getAttribute('class'));
-        this.as = 'pink'
-    }
+    // @HostListener('mouseenter', ['$event']) myfun(event: any) {
+    //     // let a = (event.target as HTMLElement).setAttribute('class', 'noproblem')
+    //     // console.log('click listener called', a.getAttribute('class'));
+    //     this.as = 'pink'
+    // }
 
-    @HostListener('mouseleave', ['$event']) myfun2(event: any) {
-        // (event.target as HTMLElement).removeAttribute('class')
+    // @HostListener('mouseleave', ['$event']) myfun2(event: any) {
+    //     // (event.target as HTMLElement).removeAttribute('class')
 
-    }
+    // }
 }

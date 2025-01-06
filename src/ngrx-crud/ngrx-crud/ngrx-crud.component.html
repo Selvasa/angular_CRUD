@@ -1,8 +1,12 @@
 <div class="d-flex">
     <div class="col-8 px-2">
-        <app-ngrx-list (getOne)="getSingleDataFromChild($event)"></app-ngrx-list>
+        <app-ngrx-list (getOne)="getSingleDataFromChild($event)" bgDir [inputs]="'lightblue'"></app-ngrx-list>
     </div>
     <div class="col-4 px-2">
         <app-ngrx-form  [getSingleValueFromParent]="passSingleValueToChild"></app-ngrx-form>
     </div>
 </div>
+
+<p bgDir [inputs]="'lightblue'">
+    hai satath
+</p>
