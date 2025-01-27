@@ -1,11 +1,18 @@
 <ul class="bg-primary d-flex fw-semibold text-white list-unstyled  hover-eff justify-content-between">
   <div class="d-flex ">
-    <li class="hover-eff p-2" routerLink="/home">Home</li>
-    <li class="hover-eff p-2" routerLink="/crud">Crud</li>
-    <li class="hover-eff p-2" routerLink="/ngrx-crud">ngrx-Crud</li>
+    <li class="hover-eff p-2" routerLinkActive="active" routerLink="/home">Home</li>
+    <li class="hover-eff p-2" routerLinkActive="active" routerLink="/crud">Crud</li>
+    <li class="hover-eff p-2" routerLinkActive="active" routerLink="/ngrx-crud">ngrx-Crud</li>
+    <li class="hover-eff p-2" routerLinkActive="active" routerLink="/obs">Obs</li>
+    <li class="hover-eff p-2" routerLink="/display" routerLinkActive="active">counter</li>
   </div>
   <div>
+    @if(isLogin){
+    <li class="hover-eff p-2" (click)="logOutUser()">logOut</li>
+    }
+    @else {
     <li class="hover-eff p-2" routerLink="/login">login</li>
+    }
   </div>
 </ul>
 

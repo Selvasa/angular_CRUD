@@ -29,16 +29,20 @@ export class CrudComponent {
         });
     }
     ngOnInit() {
+        this.crudService.getStudentData().subscribe((res: any) => {
+            console.log('call one');
+            this.studentList = res;
+        })
         this.getStudentData();
         this.getEmp();
         this.store.select('reducer').subscribe((res) => {
             console.log(res);
-
         })
     }
 
     getStudentData() {
         this.crudService.getStudentData().subscribe((res: any) => {
+            console.log('call two');
             this.studentList = res;
         })
     }

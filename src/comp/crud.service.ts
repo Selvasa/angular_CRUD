@@ -1,6 +1,7 @@
 import { inject, Injectable } from '@angular/core';
 import { IStudent } from '../model/student';
 import { HttpClient } from '@angular/common/http';
+import { share } from 'rxjs';
 
 @Injectable({
     providedIn: 'root'
@@ -16,7 +17,7 @@ export class CrudService {
     }
 
     getStudentData() {
-        return this.http.get('http://localhost:3000/students')
+        return this.http.get('http://localhost:3000/students').pipe(share())
     }
 
     deleteStudent(id: any) {

@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
-import { RouterModule } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
+import { LogOut } from '../common-service/logout.service';
 
 @Component({
   selector: '[app-root],.app-root',
@@ -10,5 +11,19 @@ import { RouterModule } from '@angular/router';
   styleUrl: './app.component.css'
 })
 export class AppComponent {
-  
+  isLogin: boolean = false;
+  private logoutService = inject(LogOut);
+  private router = inject(Router);
+
+  constructor() {
+    this.logoutService.iSLogin$.subscribe((res: any) => {
+      this.isLogin = res;
+    })
+  }
+
+  logOutUser() {
+    this.logoutService.logOut();
+    this.router.navigate(['login'])
+  }
+
 }
