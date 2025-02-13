@@ -1,0 +1,17 @@
+<div class="d-flex justify-content-between align-items-center themes">
+    <div class="d-flex left_nav">
+        <div class="p-3 hover-eff " routerLink="/signals" routerLinkActive="active">Signals</div>
+        <div class="p-3 hover-eff " routerLink="/rxjs" routerLinkActive="active">Rxjs</div>
+        <div class="p-3 hover-eff " routerLink="/crud" routerLinkActive="active">Crud</div>
+        <div class="p-3 hover-eff " routerLink="/mean" routerLinkActive="active">Mean</div>
+    </div>
+    <div class="right_nav me-2">
+        <div class="p-3 hover-eff " (click)="toggleTheme()">
+            <i *ngIf="is_Dark();else elsetheme" class="bi bi-lightning" ></i>
+        </div>
+        <ng-template #elsetheme>
+            <i class="bi bi-lightning-fill"></i>
+        </ng-template>
+    </div>
+</div>
+<router-outlet></router-outlet> 

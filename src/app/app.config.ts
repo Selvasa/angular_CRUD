@@ -1,19 +1,24 @@
-import { ApplicationConfig, provideZoneChangeDetection } from '@angular/core';
+import { APP_INITIALIZER, ApplicationConfig, provideZoneChangeDetection } from '@angular/core';
 import { provideRouter } from '@angular/router';
 import { routes } from './app.routes';
 import { provideHttpClient } from '@angular/common/http';
-import { provideStore } from '@ngrx/store';
-import { provideEffects } from '@ngrx/effects';
-import { provideStoreDevtools } from '@ngrx/store-devtools'
-import { crud_reducer, post_Reducer, } from '../ngrx-crud/crud-reducer';
+// import { provideStore } from '@ngrx/store';
+// import { provideEffects } from '@ngrx/effects';
+// import { provideStoreDevtools } from '@ngrx/store-devtools'
 
 export const appConfig: ApplicationConfig = {
   providers: [
     provideZoneChangeDetection({ eventCoalescing: true }),
     provideRouter(routes),
     provideHttpClient(),
-    provideStore({ count: crud_reducer, crud: post_Reducer }),
-    provideEffects(),
-    provideStoreDevtools()
+    {
+      provide: APP_INITIALIZER,
+      multi: true,
+      useValue: () => {
+        console.log('initializer')
+      }
+    }
+    // provideEffects(),
+    // provideStoreDevtools()
   ]
 };

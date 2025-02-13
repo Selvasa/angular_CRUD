@@ -1,19 +1,14 @@
 import { Routes } from '@angular/router';
-import { CrudComponent } from '../comp/crud/crud.component';
-import { RootComponent } from '../root/root.component';
-import { NgrxCrudComponent } from '../ngrx-crud/ngrx-crud/ngrx-crud.component';
-import { LoginComponent } from '../login/login.component';
-import { CustObsComponent } from '../custObs/cust-obs.component';
-import { DisplayComponent } from '../counter/display/display.component';
+import { SignalsComponent } from './components/comps/signals/signals.component';
+import { LandComponent } from './components/crud/land/land.component';
+import { RxjsComponent } from './components/comps/rxjs/rxjs.component';
+// import { HomeComponent } from './components/home/home.component';
 
 export const routes: Routes = [
-    { path: 'home', component: RootComponent },
-    { path: 'crud', component: CrudComponent },
-    { path: 'ngrx-crud', component: NgrxCrudComponent },
-    { path: 'login', component: LoginComponent },
-    { path: 'obs', component: CustObsComponent },
-    { path: 'counter', component: DisplayComponent },
-    { path: 'display', component: DisplayComponent }
+    { path: 'signals', component: SignalsComponent },
+    { path: 'rxjs', component: RxjsComponent },
+    { path: 'crud', component: LandComponent },
+    { path: 'mean', component: LandComponent }
 
 ];
 

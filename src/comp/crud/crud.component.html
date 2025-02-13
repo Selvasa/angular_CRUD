@@ -1,8 +1,0 @@
-<div class="d-flex mb-2">
-    <div class="col-4 px-2">
-        <app-form (formStudentValue)="valueFromChild($event)" [sStudent]="sStudent" (uformStudentValue)="updateStudent($event)"></app-form>
-    </div>
-    <div class="col-8 px-2">
-        <app-list [studentList]="studentList" (sDelete)="deleteStu($event)" (sStudent)="singleStudent($event)" ></app-list>
-    </div>
-</div>
