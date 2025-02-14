@@ -15,9 +15,15 @@ export class ListComponent {
   private readonly destroyRef = inject(DestroyRef);
 
   ngOnInit() {
-    this.service.getAllUser().pipe(takeUntilDestroyed(this.destroyRef)).subscribe((res: any) => {
-      this.listOfUser.set(res.data);
+
+    this.getData();
+    this.service.getAllUser$.pipe(takeUntilDestroyed(this.destroyRef)).subscribe((res: any) => {
+      this.listOfUser.set(res);
+
     })
+  }
+  getData() {
+    this.service.getAllUser()
   }
 
 }
