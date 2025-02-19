@@ -22,9 +22,9 @@
             <input type="number" class="form-control mt-2" id="phone" formControlName="phone">
         </div>
         <div class="mt-3">
-            <button class="btn btn-sm btn-secondary">Reset</button>&nbsp;
-            <button class="btn btn-sm btn-danger">Cancel</button>&nbsp;
-            <button class="btn btn-sm btn-success" (click)="saveTo()">Save</button>&nbsp;
+            <button class="btn btn-sm btn-secondary" (click)="resetForm()">Reset</button>&nbsp;
+            <button *ngIf="!isUpdate" class="btn btn-sm btn-success" (click)="saveTo()">Save</button>&nbsp;
+            <button *ngIf="isUpdate" class="btn btn-sm btn-warning" (click)="updateForm()">Update</button>&nbsp;
         </div>
     </div>
 </div>

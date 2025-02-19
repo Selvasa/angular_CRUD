@@ -11,6 +11,7 @@
                     <th>City</th>
                     <th>Address</th>
                     <th>Phone</th>
+                    <th>Action</th>
                 </tr>
             </thead>
             <tbody>
@@ -20,6 +21,10 @@
                     <td>{{data.city}}</td>
                     <td>{{data.address}}</td>
                     <td>{{data.phone}}</td>
+                    <td>
+                        <button class="btn btn-sm btn-success" (click)="getSingleUser(data._id)">Edit</button>&nbsp;
+                        <button class="btn btn-sm btn-danger" (click)="deleteUser(data._id)">Delete</button>
+                    </td>
                 </tr>
             </tbody>
         </table>
