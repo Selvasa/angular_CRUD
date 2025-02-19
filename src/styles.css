@@ -1,1 +1,52 @@
-/* You can add global styles to this file, and also import other style files */
+body {
+    --bg-dark: #fff;
+    --text-g: #00ff08;
+    --hover: #dee2e6;
+    --text-w: #111;
+    --hover-text: #000;
+    --body-bg: #dee2e6;
+}
+/* body {
+    --bg-dark: #000000;
+    --text-g: #00ff08;
+    --text-w: #fff;
+    --hover: #75b798;
+    --hover-text: #000;
+    --body-bg: #212529;
+} */
+
+body.dark {
+    --bg-dark: #000000;
+    --text-g: #00ff08;
+    --text-w: #fff;
+    --hover: #75b798;
+    --hover-text: #000;
+    --body-bg: #212529;
+}
+
+body {
+    color: var(--text-w);
+    background-color: var(--body-bg);
+    transition:   all .1s ease-in-out;
+}
+
+
+/*
+#dark-theme {
+    --bg-dark: #000000;
+    --bg-light: #ffffff;
+    --primary: #bb86fc;
+    --bg-color: #121212;
+    --text: #fff;
+    --info: #ffc861;
+}
+#light-theme{
+    --bg-dark: #fff;
+    --bg-light: #000;
+    --primary: #bb86fc;
+    --bg-color: #75f75b;
+    --text: #111;
+    --info: #ffc861;
+} */
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

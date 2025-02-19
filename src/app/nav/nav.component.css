@@ -1,0 +1,23 @@
+.hover-eff {
+    cursor: pointer;
+    font-weight: bold;
+    transition: all 0.4s;
+
+    &:hover {
+        color: var(--hover-text);
+        background-color: var(--hover);
+        outline: none;
+    }
+
+}
+
+.active {
+    color: var(--hover-text);
+    background-color: var(--hover);
+}
+
+.themes {
+    background-color: var(--bg-dark);
+    color: var(--text);
+    transition:   all .1s ease-in-out;
+}

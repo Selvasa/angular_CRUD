@@ -1,12 +1,14 @@
 import { Routes } from '@angular/router';
-import { CrudComponent } from '../comp/crud/crud.component';
-import { RootComponent } from '../root/root.component';
-import { NgrxCrudComponent } from '../ngrx-crud/ngrx-crud/ngrx-crud.component';
+import { SignalsComponent } from './components/comps/signals/signals.component';
+import { LandComponent } from './components/crud/land/land.component';
+import { RxjsComponent } from './components/comps/rxjs/rxjs.component';
+import { LandingComponent } from './components/mean/landing/landing.component';
 
 export const routes: Routes = [
-    { path: 'home', component: RootComponent },
-    { path: 'crud', component: CrudComponent },
-    { path: 'ngrx-crud', component: NgrxCrudComponent }
+    { path: 'signals', component: SignalsComponent },
+    { path: 'rxjs', component: RxjsComponent },
+    { path: 'crud', component: LandComponent },
+    { path: 'mean', component: LandingComponent }
 
 ];
 
