@@ -1,7 +1,10 @@
 <div class="text-center">
-    <h2>It is going to be a signal</h2>
-    <h4>{{count()}}</h4>
-    <button class="btn" (click)="increment()">Inc</button>&nbsp;
-    <button class="btn" (click)="decrement()">Dec</button>&nbsp;
-    <button class="btn" (click)="reset()">reset</button>
+    <h2>It is a writable signal</h2>
+    <h2>It is a {{myVar}}</h2>
+    <h4 [ngStyle]="{'color':count()==0 ? 'unset':count() % 2 == 0 ?'red':'blue'}">count is : {{count()}}</h4>
+    <button class="btn btn-outline-secondary" (click)="increment()">Inc</button>&nbsp;
+    <button class="btn btn-outline-secondary" (click)="decrement()">Dec</button>&nbsp;
+    <button class="btn btn-outline-secondary" (click)="reset()">reset</button>
 </div>
+<div>{{arr()[0]|json}}</div>
+<!-- <div [ngClass]=" count()==0 ? 'unset':count() % 2 == 0 ?'red':'blue'">this is my component </div> -->

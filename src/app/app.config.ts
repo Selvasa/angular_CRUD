@@ -1,13 +1,17 @@
-import { APP_INITIALIZER, ApplicationConfig, importProvidersFrom, provideZoneChangeDetection } from '@angular/core';
+import { APP_INITIALIZER, ApplicationConfig, importProvidersFrom, InjectionToken, provideZoneChangeDetection } from '@angular/core';
 import { provideRouter } from '@angular/router';
 import { routes } from './app.routes';
 import { HTTP_INTERCEPTORS, provideHttpClient, withInterceptors, withInterceptorsFromDi } from '@angular/common/http';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
-import { MeanInterceptor } from './intercept.service.ts/mean.inercept.service';
+import { MeanInterceptor } from './service/mean.inercept.service';
 // import { provideStore } from '@ngrx/store';
 // import { provideEffects } from '@ngrx/effects';
 // import { provideStoreDevtools } from '@ngrx/store-devtools'
 import { NgxSpinnerModule } from 'ngx-spinner';
+import { CommonService, MyService } from './components/comps/excersice.service';
+
+export const TOKKEN = new InjectionToken('my_service')
+
 export const appConfig: ApplicationConfig = {
   providers: [
     provideZoneChangeDetection({ eventCoalescing: true }),
@@ -24,6 +28,7 @@ export const appConfig: ApplicationConfig = {
       multi: true,
       useClass: MeanInterceptor
     },
+    { provide: TOKKEN, useClass: CommonService },
 
     provideAnimationsAsync()
     // provideEffects(),
